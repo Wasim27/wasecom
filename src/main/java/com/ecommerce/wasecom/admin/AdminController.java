@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminController {
 
   @GetMapping("/admin")
-  public String indexPage(Model model) {
+  public String adminPage(Model model) {
     model.addAttribute("admin", "Admin Home");
     return "adminHomepage";
   }
