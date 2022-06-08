@@ -42,25 +42,25 @@
 </nav>
 
 <div class="p-5">
-    <a th:href="@{/admin/categories/add}" style="margin: 20px 0" class="p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">Add Category</a>
+    <a th:href="@{/admin/products/add}" style="margin: 20px 0" class="p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">Add Product</a>
     <table class="min-w-full leading-normal mt-5">
         <thead>
         <tr>
             <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider" scope="col">SN</th>
-            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider" scope="col">Category Name</th>
+            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider" scope="col">Product Name</th>
             <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider" scope="col">Delete</th>
             <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider" scope="col">Update</th>
         </tr>
         </thead>
         <tbody>
 
-        <tr class="border-b-2 text-center py-3" th:each="category, c : ${categories}">
+        <tr class="border-b-2 text-center py-3" th:each="product, p : ${products}">
 <!--            <th scope="row" th:text="${c.index + 1}"></th>-->
-            <th scope="row" th:text="${category.id}"></th>
-            <td th:text="${category.name}">Name</td>
+            <th scope="row" th:text="${product.id}"></th>
+            <td th:text="${product.name}">Name</td>
 
-            <td class="p-4"><a href="" th:href="@{/admin/categories/delete/{id}(id=${category.id})}" class="px-5 py-3 border-b-2 border-red-300 bg-red-400 text-center text-xs font-semibold text-white uppercase tracking-wider">Delete</a></td>
-            <td><a href="" th:href="@{/admin/categories/update/{id}(id=${category.id})}" class="px-5 py-3 border-b-2 border-blue-200 bg-blue-400 text-center text-xs font-semibold text-white uppercase tracking-wider">Update</a></td>
+            <td class="p-4"><a href="" th:href="@{/admin/products/delete/{id}(id=${product.id})}" class="px-5 py-3 border-b-2 border-red-300 bg-red-400 text-center text-xs font-semibold text-white uppercase tracking-wider">Delete</a></td>
+            <td><a href="" th:href="@{/admin/products/update/{id}(id=${product.id})}" class="px-5 py-3 border-b-2 border-blue-200 bg-blue-400 text-center text-xs font-semibold text-white uppercase tracking-wider">Update</a></td>
         </tr>
         </tbody>
     </table>

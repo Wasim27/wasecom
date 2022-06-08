@@ -40,23 +40,42 @@
         </div>
     </nav>
 
-
     <div>
         <div>
             <div>
-                <form th:action="@{/admin/categories/add}" method="post" th:object="${category}">
+                <form th:action="@{/admin/products/add}" method="post" th:object="${productDto}">
                     <input type="hidden" name="id"  th:field="*{id}">
                     <div>
                         <label for="name">Name</label>
                         <input type="text" required th:field="*{name}" name="name" id="name"  placeholder="Enter name">
+
+                        <label for="category">Select Category</label>
+                        <select th:field="*{categoryId}" id="category" name="category">
+                            <option th:each="category : ${categories}"
+                                    th:value="${category.id}"
+                                    th:text="${category.name}"
+                            >
+                        </select>
+
+                        <label for="description">Description</label>
+                        <textarea rows="3" th:field="*{description}" name="description" id="description"></textarea>
+
+                        <label for="price">Price</label>
+                        <input type="number" required th:field="*{price}" name="price" id="price">
+
+                        <label for="weight">Weight</label>
+                        <input type="number" required th:field="*{weight}" name="weight" id="weight">
+
+                        <label for="quantity">Quantity</label>
+                        <input type="number" required th:field="*{quantity}" name="quantity" id="quantity">
+
+                        <label for="image">Product Image</label>
+                        <input type="file" required th:field="*{productImage}" name="image" id="image">
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="">Submit</button>
                 </form>
             </div>
         </div>
     </div>
-
-
-
 </body>
 </html>
