@@ -26,7 +26,7 @@ public class Product {
   private double price;
   private double weight;
   private Integer quantity;
-  private String productImage;
+  private String productImageName;
 
   @ManyToOne
   @JoinColumn(name = "category_id", referencedColumnName = "category_id")

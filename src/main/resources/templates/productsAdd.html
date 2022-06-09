@@ -43,7 +43,7 @@
     <div>
         <div>
             <div>
-                <form th:action="@{/admin/products/add}" method="post" th:object="${productDto}">
+                <form th:action="@{/admin/products/add}" method="post" th:object="${productDto}" enctype="multipart/form-data">
                     <input type="hidden" name="id"  th:field="*{id}">
                     <div>
                         <label for="name">Name</label>
@@ -69,8 +69,10 @@
                         <label for="quantity">Quantity</label>
                         <input type="number" required th:field="*{quantity}" name="quantity" id="quantity">
 
-                        <label for="image">Product Image</label>
-                        <input type="file" required th:field="*{productImage}" name="image" id="image">
+                        <label for="productImage">Product Image</label>
+                        <input type="file" name="productImage" id="productImage" accept="image/png, image/jpeg">
+
+                        <input type="hidden" name="productImageName" th:value="${productDto.productImageName}">
                     </div>
                     <button type="submit" class="">Submit</button>
                 </form>
