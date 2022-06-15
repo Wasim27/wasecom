@@ -53,10 +53,13 @@ public class ProductController {
     product.setPrice(productDto.getPrice());
     product.setWeight(productDto.getWeight());
     product.setQuantity(productDto.getQuantity());
-    
+
+//    String imageUUID;
     String fileName;
     if(!multipartFile.isEmpty()) {
       fileName = multipartFile.getOriginalFilename();
+//      Path fileNameAndPath = Paths.get(uploadDir, imageUUID);
+//      Files.write(fileNameAndPath, multipartFile.getBytes());
       FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     } else {
       fileName = productImageName;
