@@ -1,6 +1,5 @@
 package com.ecommerce.wasecom.cart;
 
-import com.ecommerce.wasecom.global.GlobalData;
 import com.ecommerce.wasecom.product.Product;
 import com.ecommerce.wasecom.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +15,27 @@ public class CartController {
 
   @GetMapping("/addToCart/{id}")
   public String addToCart(@PathVariable Long id) {
-    GlobalData.cart.add(productService.getProduct(id).get());
+    CartData.cart.add(productService.getProduct(id).get());
     return "redirect:/shop";
   }
 
   @GetMapping("/cart")
   public String cartGet(Model model) {
-    model.addAttribute("cartCount", GlobalData.cart.size());
-    model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
-    model.addAttribute("cart", GlobalData.cart);
+    model.addAttribute("cartCount", CartData.cart.size());
+    model.addAttribute("total", CartData.cart.stream().mapToDouble(Product::getPrice).sum());
+    model.addAttribute("cart", CartData.cart);
     return "cart";
+  }
+
+  @GetMapping("/cart/removeItem/{index}")
+  public String cartRemove(@PathVariable Long index) {
+    CartData.cart.remove(index);
+    return "redirect:/cart";
+  }
+
+  @GetMapping("/checkout")
+  public String checkout(Model model) {
+    model.addAttribute("total", CartData.cart.stream().mapToDouble(Product::getPrice).sum());
+    return "checkout";
   }
 }

@@ -1,7 +1,7 @@
 package com.ecommerce.wasecom.admin;
 
 import com.ecommerce.wasecom.category.CategoryService;
-import com.ecommerce.wasecom.global.GlobalData;
+import com.ecommerce.wasecom.cart.CartData;
 import com.ecommerce.wasecom.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class HomeController {
 
   @GetMapping({"/", "/home"})
   public String home(Model model) {
-    model.addAttribute("cartCount", GlobalData.cart.size());
+    model.addAttribute("cartCount", CartData.cart.size());
     return "index";
   }
 
@@ -26,7 +26,7 @@ public class HomeController {
   public String shop(Model model) {
     model.addAttribute("categories", categoryService.getAllCategories());
     model.addAttribute("products", productService.getAllProducts());
-    model.addAttribute("cartCount", GlobalData.cart.size());
+    model.addAttribute("cartCount", CartData.cart.size());
     return "shop";
   }
 
@@ -34,7 +34,7 @@ public class HomeController {
   public String shopByCategory(@PathVariable Long id, Model model) {
     model.addAttribute("categories", categoryService.getAllCategories());
     model.addAttribute("products", productService.getProductByCategory(id));
-    model.addAttribute("cartCount", GlobalData.cart.size());
+    model.addAttribute("cartCount", CartData.cart.size());
     return "shop";
   }
 
@@ -42,7 +42,7 @@ public class HomeController {
   public String viewProduct(@PathVariable Long id, Model model) {
     model.addAttribute("categories", categoryService.getAllCategories());
     model.addAttribute("product", productService.getProduct(id).get());
-    model.addAttribute("cartCount", GlobalData.cart.size());
+    model.addAttribute("cartCount", CartData.cart.size());
     return "singleProductView";
   }
 }

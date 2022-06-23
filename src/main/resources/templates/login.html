@@ -6,9 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
+
+<!--https://tailwindcomponents.com/component/login-page-with-image-->
 
 <div class="bg-gray-100 text-gray-600 work-sans leading-normal text-base tracking-normal">
     <!--Nav-->
@@ -46,11 +48,11 @@
 
 <div class="bg-white dark:bg-gray-900">
     <div class="flex justify-center h-screen">
-        <div class="hidden bg-cover lg:block lg:w-2/3" style="background-image: url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)">
+        <div class="hidden bg-cover lg:block lg:w-2/3" style="background-image: url(https://media.istockphoto.com/photos/shopping-online-concept-parcel-or-paper-cartons-with-a-shopping-cart-picture-id1249219777?b=1&k=20&m=1249219777&s=170667a&w=0&h=0dXNU-fjD9aOMmrvlppQhJ9gOqnW9dslKFdYLQN9rnk=">
             <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
                 <div>
-                    <h2 class="text-4xl font-bold text-white">Brand</h2>
-                    <p class="max-w-xl mt-3 text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In autem ipsa, nulla laboriosam dolores, repellendus perferendis libero suscipit nam temporibus molestiae</p>
+                    <h2 class="text-4xl font-bold text-white">Wasecom</h2>
+                    <p class="max-w-xl mt-3 text-gray-300">The one-stop place for all your shopping needs!</p>
                 </div>
             </div>
         </div>
@@ -58,7 +60,7 @@
         <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
             <div class="flex-1">
                 <div class="text-center">
-                    <h2 class="text-4xl font-bold text-center text-gray-700 dark:text-white">Brand</h2>
+                    <h2 class="text-4xl font-bold text-center text-gray-700 dark:text-white">Wasecom</h2>
 
                     <p class="mt-3 text-gray-500 dark:text-gray-300">Sign in to access your account</p>
                 </div>
@@ -73,7 +75,8 @@
                         <div class="mt-6">
                             <div class="flex justify-between mb-2">
                                 <label for="password" class="text-sm text-gray-600 dark:text-gray-200">Password</label>
-                                <a href="" th:href="@{/forgotpassword}" class="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline">Forgot password?</a>
+<!--                                <a href="" th:href="@{/forgotpassword}" class="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline">Forgot password?</a>-->
+                                <a href="" th:href="@{/login}" class="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline">Forgot password?</a>
                             </div>
 
                             <input type="password" name="password" id="password" placeholder="Your Password" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
@@ -88,7 +91,7 @@
                         </div>
                     </form>
                     <p class="mt-6 text-sm text-center text-gray-400">Don&#x27;t have an account yet? <a href="./register.html" th:href="@{/register}" class="text-blue-500 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
-                    <a href="/oauth2/authorization/google" class="flex justify-center cursor-pointer mt-5 rounded py-2 px-4 bg-blue-500 text-white hover:bg-green-700 hover:text-gray-50 text-sm">Sign-In with google </a>
+                    <a href="/oauth2/authorization/google" class="flex justify-center cursor-pointer mt-5 rounded py-2 px-4 bg-blue-500 text-white hover:bg-green-700 hover:text-gray-50 text-sm">Sign-In with Google </a>
                 </div>
             </div>
         </div>
