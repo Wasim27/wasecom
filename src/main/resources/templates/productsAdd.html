@@ -2,83 +2,134 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
 
-    <title>Document</title>
+  <title>Product Management</title>
 </head>
 
 <body>
-    <nav class="bg-gray-800">
-        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div class="relative flex items-center justify-between h-16">
-                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                </div>
-                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="flex-shrink-0 flex items-center">
-                        <img th:src="@{/images/logo.png}" src="../static/images/logo.png" width="50" height="" class=""
-                             alt="" />
-                    </div>
-                    <div class="hidden sm:block sm:ml-6">
-                        <div class="flex space-x-4">
-                            <a th:href="@{/admin}" href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Admin Home</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <a th:href="@{/logout}" href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
-                </div>
-            </div>
+<nav class="bg-gray-800">
+  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+      </div>
+      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex-shrink-0 flex items-center">
+          <img th:src="@{/images/logo.png}" src="../static/images/logo.png" width="50" height=""
+               class=""
+               alt=""/>
         </div>
-
-        <div class="sm:hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a th:href="@{/admin}"  href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Admin Home</a>
-            </div>
+        <div class="hidden sm:block sm:ml-6">
+          <div class="flex space-x-4">
+            <a th:href="@{/admin}" href="#"
+               class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+               aria-current="page">Admin Home</a>
+          </div>
         </div>
-    </nav>
-
-    <div>
-        <div>
-            <div>
-                <form th:action="@{/admin/products/add}" method="post" th:object="${productDto}" enctype="multipart/form-data">
-                    <input type="hidden" name="id"  th:field="*{id}">
-                    <div>
-                        <label for="name">Name</label>
-                        <input type="text" required th:field="*{name}" name="name" id="name"  placeholder="Enter name">
-
-                        <label for="category">Select Category</label>
-                        <select th:field="*{categoryId}" id="category" name="category">
-                            <option th:each="category : ${categories}"
-                                    th:value="${category.id}"
-                                    th:text="${category.name}"
-                            >
-                        </select>
-
-                        <label for="description">Description</label>
-                        <textarea rows="3" th:field="*{description}" name="description" id="description"></textarea>
-
-                        <label for="price">Price</label>
-                        <input type="number" required th:field="*{price}" name="price" id="price">
-
-                        <label for="weight">Weight</label>
-                        <input type="number" required th:field="*{weight}" name="weight" id="weight">
-
-                        <label for="quantity">Quantity</label>
-                        <input type="number" required th:field="*{quantity}" name="quantity" id="quantity">
-
-                        <label for="productImage">Product Image</label>
-                        <input type="file" name="productImage" id="productImage" accept="image/png, image/jpeg">
-
-                        <input type="hidden" name="productImageName" th:value="${productDto.productImageName}">
-                    </div>
-                    <button type="submit" class="">Submit</button>
-                </form>
-            </div>
-        </div>
+      </div>
+      <div
+          class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <a th:href="@{/logout}" href="#"
+           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+      </div>
     </div>
+  </div>
+
+  <div class="sm:hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a th:href="@{/admin}" href="#"
+         class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+         aria-current="page">Admin Home</a>
+    </div>
+  </div>
+</nav>
+
+<div>
+  <div>
+    <div>
+      <form th:action="@{/admin/products/add}" method="post" th:object="${productDto}"
+            enctype="multipart/form-data">
+        <input type="hidden" name="id" th:field="*{id}">
+        <div class="grid gap-6 m-5 lg:grid-cols-2">
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   for="name">Name</label>
+            <input
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="text" required th:field="*{name}" name="name" id="name"
+                placeholder="Enter name">
+          </div>
+
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   for="category">Select Category</label>
+            <select
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                th:field="*{categoryId}" id="category" name="category">
+              <option th:each="category : ${categories}"
+                      th:value="${category.id}"
+                      th:text="${category.name}"
+              >
+            </select>
+          </div>
+
+          <div>
+
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   for="description">Description</label>
+            <textarea
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                rows="3" th:field="*{description}" name="description" id="description"></textarea>
+          </div>
+
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   for="price">Price</label>
+            <input
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="number" step=".01" required th:field="*{price}" name="price" id="price">
+          </div>
+
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   for="weight">Weight</label>
+            <input
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="number" required th:field="*{weight}" name="weight" id="weight">
+          </div>
+
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   for="quantity">Quantity</label>
+            <input
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="number" required th:field="*{quantity}" name="quantity" id="quantity">
+          </div>
+
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   for="productImage">Product Image</label>
+            <input
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="file" name="productImage" id="productImage" accept="image/png, image/jpeg">
+          </div>
+
+          <div>
+            <input type="hidden" name="productImageName" th:value="${productDto.productImageName}">
+          </div>
+
+        </div>
+        <button
+            class="px-8 m-4 rounded bg-green-400 hover:bg-green-500 text-gray-800 font-bold p-4 uppercase border-green-600"
+            type="submit">Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
 </body>
 </html>

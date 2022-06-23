@@ -38,7 +38,7 @@ public class SecurityConfig {
         .loginPage("/login")
         .permitAll()
         .failureUrl("/login?error= true")
-        .defaultSuccessUrl("/")
+        .defaultSuccessUrl("/admin")
         .usernameParameter("email")
         .passwordParameter("password")
         .and()

@@ -9,7 +9,7 @@
 <!--    <link rel="stylesheet" th:href="@{/css/main.css}" />-->
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
 
-    <title>Document</title>
+    <title>Category Management</title>
 </head>
 
 <body>
@@ -46,13 +46,13 @@
     <div>
         <div>
             <div>
-                <form th:action="@{/admin/categories/add}" method="post" th:object="${category}">
+                <form class="m-4 flex" th:action="@{/admin/categories/add}" method="post" th:object="${category}">
                     <input type="hidden" name="id"  th:field="*{id}">
                     <div>
                         <label for="name">Name</label>
-                        <input type="text" required th:field="*{name}" name="name" id="name"  placeholder="Enter name">
+                        <input class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" type="text" required th:field="*{name}" name="name" id="name"  placeholder="Enter name">
                     </div>
-                    <button type="submit">Submit</button>
+                    <button class="px-8 rounded-r-lg bg-green-400 hover:bg-green-600 text-gray-800 font-bold p-4 uppercase border-green-500 border-t border-b border-r" type="submit">Submit</button>
                 </form>
             </div>
         </div>

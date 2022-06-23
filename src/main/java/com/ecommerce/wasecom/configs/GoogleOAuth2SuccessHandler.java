@@ -34,7 +34,7 @@ public class GoogleOAuth2SuccessHandler implements AuthenticationSuccessHandler 
       Authentication authentication) throws IOException, ServletException {
     OAuth2AuthenticationToken token = (OAuth2AuthenticationToken) authentication;
     String email = token.getPrincipal().getAttributes().get("email").toString();
-    if(userRepository.findUserByEmail(email).isPresent()) {
+    if (userRepository.findUserByEmail(email).isPresent()) {
     } else {
       User user = new User();
       user.setFirstName(token.getPrincipal().getAttributes().get("given_name").toString());
