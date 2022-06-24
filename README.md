@@ -24,7 +24,6 @@
       </ul>
     </li>
     <li><a href="#application-images">Application Images</a></li>
-    <li><a href="#extra-implementations-information">Additional Information</a></li>
     <li><a href="#to-do">To Do</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -61,12 +60,33 @@ May have to run pom.xml if errors occur.
    ```sh
    git clone git@github.com:Wasim27/Wasecom.git
    ```
+   
+2. Create MySQL Database
+   ```
+   CREATE DATABASE wasecom
+   ```
 
-2. Build Dockerfile and start containers
+3. Run Spring Boot App
    ```
    mvn spring-boot:run
    ```
-3. Go to the web server \
+   
+4. Insert Database Data (Admin User)
+   ```
+   INSERT INTO roles (id, name) VALUES
+   (1, 'ADMIN'),
+   (2, 'USER');
+   ```
+   ```
+   INSERT INTO users (id, email, password, first_name, last_name) VALUES
+   (1, 'admin@gmail.com', *BcryptedPasswordHere*, 'Admin', 'Name');
+   ```
+   ```
+   INSERT INTO user_role(user_id, role_id) VALUES
+   (1,1);
+   ```
+
+6. Go to the web server \
    http://localhost:8088/
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -102,20 +122,6 @@ May have to run pom.xml if errors occur.
 <br>
 <br>
 
-
-<!-- Extra Implementations Information -->
-## Extra Implementations Information
-* May have to navigate to /admin when logged in as administrator
-
-  Default user details:
-  ```
-  Email: admin@gmail.com
-  Password: admin
-  
-  Email: bob@gmail.com
-  Password: bob
-  ```
-<br>
 
 <!-- To-Do -->
 ## To Do
